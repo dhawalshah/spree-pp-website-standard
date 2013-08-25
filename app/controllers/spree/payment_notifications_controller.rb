@@ -4,7 +4,7 @@ module Spree
     skip_before_filter :restriction_access
     
     def create
-      if(Spree::PaypalWebsiteStandard::Config.encrypted && (params[:secret] != Spree::PaypalWebsiteStandard::Config.ipn_secret))
+      if(Rails.configuration.paypal_websites_standard_encrypted && (params[:secret] != Rails.configuration.paypal_websites_standard_ipn_secret))
         logger.info "PayPal_Website_Standard: attempt to send an IPN with invalid secret"
         raise Exception
       end
@@ -82,7 +82,7 @@ module Spree
     end
     
     def default_country
-      Country.find Spree::PaypalWebsiteStandard::Config.default_country_id
+      Country.find Rails.configuration.paypal_websites_standard_default_country_id
     end
     
   end

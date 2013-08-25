@@ -6,11 +6,11 @@
   <%= checkout_progress %>
   <br clear="left" />
   <%= render "spree/shared/error_messages", :target => @order %>
-  <%= hook :checkout_summary_box do %>
-    <div id="checkout-summary">
+  
+    <div id="checkout-summary" data-hook="checkout_summary_box">
       <%= render 'summary', :order => @order %>
     </div>
-  <% end %>
+  
 
 
   <% if(@order.state == "payment") %>

@@ -14,15 +14,15 @@ Spree::Order.class_eval do
   end
   
   def self.paypal_payment_method
-    PaymentMethod.select{ |pm| pm.name.downcase =~ /paypal/}.first
+    Spree::PaymentMethod.select{ |pm| pm.name.downcase =~ /paypal/}.first
   end
   
   # commented-out, will be removed
   # decide on configuration/preference side whether you want encrypted payments
   #def self.use_encrypted_paypal_link?
-    #Spree::PaypalWebsiteStandard::Config.encrypted &&
-    #Spree::PaypalWebsiteStandard::Config.ipn_secret &&
-    #Spree::PaypalWebsiteStandard::Config.cert_id &&
+    #Rails.configuration.paypal_websites_standard_encrypted &&
+    #Rails.configuration.paypal_websites_standard_ipn_secret &&
+    #Rails.configuration.paypal_websites_standard_cert_id &&
     #File.exist?(PAYPAL_CERT_PEM) &&
     #File.exist?(APP_CERT_PEM) &&
     #File.exist?(APP_KEY_PEM)

@@ -1,4 +1,5 @@
 Spree::BaseController.class_eval do
+	include Spree::Core::ControllerHelpers::Order
 	before_filter :check_current_order
 	def check_current_order
 		if current_order or session[:order_id]
