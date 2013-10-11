@@ -22,4 +22,27 @@ class Spree::BillingIntegration::PaypalWebsiteStandard < Spree::BillingIntegrati
     false
   end
 
+  def actions
+    %w(capture void)
+  end
+
+  def can_capture?(payment)
+    ['pending'].include?(payment.state)
+  end
+
+  def capture(*args)
+    r = ActiveMerchant::Billing::Response.new(true, "", {}, {})
+    # Horrible, horrible hack...
+    if r.success?
+      order_id = /^\w+/.match(args[2][:order_id]).to_s
+      order = Spree::Order.find_by_number(order_id)
+      order.update_attribute :state, "complete"
+    end
+    return r
+  end
+
+  def void(*args)
+    ActiveMerchant::Billing::Response.new(true, "", {}, {})
+  end
+
 end
