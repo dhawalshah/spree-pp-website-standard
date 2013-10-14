@@ -4,6 +4,12 @@ A [Spree](http://spreecommerce.com) extension to allow payments using PayPal Web
 
 [![Build Status](https://secure.travis-ci.org/tomash/spree-pp-website-standard.png)](http://travis-ci.org/tomash/spree-pp-website-standard)
 
+## Import wanning
+
+This was forked from [tomash/spree-pp-website-standard](https://github.com/tomash/spree-pp-website-standard) to implement a quick and dirty fix for this to work with Spree 2.0. Hopefully, I'll develop a proper Spree 2.0—compatible version soon.
+
+Here goes the original README:
+
 ## Before you read further
 
 This README is in the process of thorough rework to describe the current codebase, design decisions and how to use it. But at the moment some parts are out-of-date. Please read the code of the extension, it's pretty well commented and structured. 
